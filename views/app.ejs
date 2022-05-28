@@ -60,5 +60,38 @@
             <li class="alert alert-secondary" role="alert">Aguardando...</li>
         </ul>
     </div>
+    <script>
+        setInterval(() => {
+            fetch('/data').then(res => res.json())
+                          .then(json => {
+                              const sell = document.getElementById('sell');
+                              sell.innerText = json.sell;
+
+                              const buy = document.getElementById('buy');
+                              buy.innerText = json.buy;
+
+                              const coins = document.getElementById('coins');
+                              coins.innerText = '';
+                              json.coins.forEach(coin => {
+                                  coins.innerHTML += `<li><strong>${coin.asset}:</strong>${coin.free}</li>`;
+                              })
+                          });
+
+                          const timeline = document.getElementById('timeline');
+
+                          if (json.buyOrder) {
+                              const {id, status} = json.buyOrder;
+
+                              timeline.innerHTML = `<li class="alert alert-secondary" role="alert"> Buy Order: ${Status} - ${id} at ${date}> </li>` + timeline.innerHTML;
+                          }
+
+                          
+                          if (json.sellOrder) {
+                              const {id, status} = json.sellOrder;
+
+                              timeline.innerHTML = `<li class="alert alert-secondary" role="alert"> Sell Order: ${Status} - ${id} at ${date}> </li>` + timeline.innerHTML;
+                          }
+        }, 3000 );
+    </script>
 </body>
 </html>
