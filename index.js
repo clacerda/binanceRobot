@@ -31,18 +31,17 @@ setInterval( async () => {
             console.log(coins);
 
             console.log('Verificando carteira...');
-            const walletUSD = parseFloat(coins.find(c => c.asset === coin).free);
-            //console.log(walletUSD)
-            if (sell <= walletUSD) {
+            const walletCoin = parseFloat(coins.find(c => c.asset === coin).free);
+            const quantia = parseFloat((walletCoin / sell) - 0.00001).toFixed(5); // Calc de quantidade.
+            console.log("Quantia de dinheiro: " + quantia)
+            if (quantia > 0) {
                 console.log('Dinheiro sulficiente, comprando...');
-                const buyOrder = await api.newOrder(symbol, 1);
+                const buyOrder = await api.newOrder(symbol, quantia);
                 console.log(`orderId: ${buyOrder.orderId}`);
                 console.log(`status: ${buyOrder.status}`);
-
-                
+ 
             }
-      
-         
+       
         
 
     }else if(buy && buy > goodsell){

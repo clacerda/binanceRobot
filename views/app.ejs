@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <title>Trader bot</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Trader bot</h1>
+            <p>Last updated ar: <span id="lastUpdate">
+                <%= lastUpdate %>
+              </span> 
+            </p>
+            <hr>
+
+            <div class="row">
+                <div class="col-3 alert alert-info" role="alert">
+                    <h2>Wallet</h2>
+                    <ul id="coins">
+                        <li><strong>BTC:</strong><span>1</span></li>
+                        <li><strong>USD:</strong><span>2</span></li>
+                    </ul>
+                </div>
+
+                <div class="col-3 alert alert-success offset-md-1" role="alert">
+                    <h2>Market</h2>
+                    <p>
+                        <strong>Symbol:</strong> 
+                        <span>
+                            <%= symbol %>
+                        </span>
+                    </p>
+                    <p>
+                        <strong>Profitability:</strong> 
+                        <span>
+                            <%= profitability %>
+                        </span>
+                    </p>
+                    <p>
+                        <strong>Sell Price:</strong><span id="sell">1</span>
+                    </p>
+                    <p>
+                        <strong>Buy Price:</strong><span id="buy">1</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <hr>
+        <h2>TimeLine:</h2>
+        <ul id="timeline" style="list-style: none;"> 
+            <li class="alert alert-secondary" role="alert">Aguardando...</li>
+        </ul>
+    </div>
+</body>
+</html>
